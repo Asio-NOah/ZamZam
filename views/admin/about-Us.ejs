@@ -1,0 +1,81 @@
+<div class="admin_wrapper">
+    <div class="left-sidebar">
+        <ul>
+            <li><a href="#rp">Responsible Travel Policy</a></li>
+            <li><a href="#faq">Help & FAQ</a></li>
+            <li><a href="#tw">Why Travel Wonders</a></li>
+            <li><a href="#cu">Contact Us</a></li>
+            <li><a href="#pp">Privacy Policy</a></li>
+            <li><a href="#ng">New Norms and Safari Guides</a></li>
+        </ul>
+    </div>
+    <div class="admin-content">
+        <h1 class="admin-heading">About Us</h1>
+        <div class="content">
+
+            <% if (aboutUsContent.length === 0) { %>
+                <p>No about information available at the moment.</p>
+            <% }%> else
+            <% aboutUsContent.forEach(function(aboutUs) { %>
+            <section id="rp">
+                <h2 class="section-heading">Responsible Travel Policy</h2>
+                <p><%= aboutUs.responsibleTravelPolicy %></p>
+            </section>
+            <section id="faq">
+                <h2 class="section-heading">Help & FAQ</h2>
+                <p><%= aboutUs.helpAndFAQ %></p>
+            </section>
+            <section id="tw">
+                <h2 class="section-heading">Why Travel Wonders</h2>
+                <p><%= aboutUs.whyTravelWonders %></p>
+            </section>
+            <section id="cu">
+                <h2 class="section-heading">Contact Us</h2>
+                <p><%= aboutUs.contactUs %></p>
+            </section>
+            <section id="pp">
+                <h2 class="section-heading">Privacy Policy</h2>
+                <p><%= aboutUs.privacyPolicy %></p>
+            </section>
+            <section id="ng">
+                <h2 class="section-heading">New Norms and Safari Guides</h2>
+                <p><%= aboutUs.newNormsAndSafariGuides %></p>
+            </section>
+            <% }); %>
+
+            <section class="faqs">
+                <h1>Faqs</h1>
+                <div class="button-group">
+                    <a href="/add-faq" class="admin-btn">Add New Faq</a>
+                </div>
+                <table>
+                    <thead>
+                      <th>SN</th>
+                      <th>Title</th>
+                      <th colspan="2">Action</th>
+                    </thead>
+                    <tbody>
+                      <% if (faqs.length === 0) { %>
+                        <tr>
+                          <td colspan="4">No faqs available at the moment.</td>
+                        </tr>
+                      <% } else { %>
+                        <% faqs.forEach(function(faq, index) { %>
+                          <tr>
+                            <td><%= index + 1 %></td>
+                            <td><a href="/faqs/<%= faq._id %>"><%= faq.qstn %></a></td>
+                            <td><a href="/edit-faq/<%= faq._id %>" class="edit">Edit</a></td>
+                            <td>
+                              <form action="/delete-faq/<%= faq._id %>?_method=DELETE" method="post">
+                                <button type="submit" class="delete">Delete</button>
+                              </form>
+                            </td>
+                          </tr>
+                        <% }); %>
+                      <% } %>
+                    </tbody>
+                  </table>
+            </section>
+        </div>
+    </div>
+</div>

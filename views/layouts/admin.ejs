@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content=' <%= locals.description %>'>
+        <link rel="stylesheet" href="floating-wpp.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/floating-wpp.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+        <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="floating-wpp.js"></script>
+        <script src="https://kit.fontawesome.com/92ebb82932.js" crossorigin="anonymous"></script>
+        <script src="/js/script.js"></script>
+        <title><%= locals.title %></title>
+    </head>
+    <body >
+
+        <div class="admin-container">
+    
+            <%- include('../partials/header-admin.ejs') %>
+    
+            <div class="admin-main">
+    
+                <%- body %>
+    
+            </div>
+        </div>
+        
+    </body>
+</html>

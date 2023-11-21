@@ -1,0 +1,196 @@
+<div class="admin_wrapper">
+
+    <div class="left-sidebar">
+        <ul>
+            <li><a href="#gs">Manage Gorilla Safaris</a></li>
+            <li><a href="#t">Manage Tours</a></li>
+            <li><a href="#ws">Manage Wildlife Safaris</a></li>
+            <li><a href="#a">Manage Activities</a></li>
+        </ul>
+    </div>
+    
+    <div class="admin-content">
+
+        <h1 class="admin-heading">Welcome to Congo!</h1>
+
+        <section id="gs">
+            <h2 class="section-heading">Gorilla Safaris</h2>
+            <div class="button-group">
+                <a href="/add-gs" class="admin-btn">Add New Gorilla Safari</a>
+            </div>
+            <table>
+                <thead>
+                    <th>SN</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th colspan="3">Action</th>
+                </thead>
+                <tbody>
+                    <% congoGorillaSafaris.forEach(function(gorillaSafari, index) { %>
+                        <tr>
+                            <td><%= index + 1 %></td>
+                            <td>
+                                <a href="/content-gs/<%= gorillaSafari._id %>"><%= gorillaSafari.title %></a>
+                            </td>
+                            <td>Asizy</td>
+                            <td><a href="/edit-gs/<%= gorillaSafari._id %>" class="edit">Edit</a></td>
+                            <td>
+                                <form action="/delete-post/<%= gorillaSafari._id %>?_method=DELETE" method="post">
+                                    <input type="submit" value="Delete" class="delete">
+                                </form>
+                            </td>
+                            <td><a href="#" class="publish">Publish</a></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+            
+            <% if (congoGorillaSafaris.length === 0) { %>
+                <p>No gorilla safaris found.</p>
+            <% } %>
+        </section>
+        <section id="t">
+            <h2 class="section-heading">Tours</h2>
+            <div class="button-group">
+                <a href="/add-tour" class="admin-btn">Add New Tour</a>
+            </div>
+            <table>
+                <thead>
+                    <th>SN</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th colspan="3">Action</th>
+                </thead>
+                <tbody>
+                    <% congoTours.forEach(function(tour, index) { %>
+                        <tr>
+                            <td><%= index + 1 %></td>
+                            <td>
+                                <a href="/content-tours/<%= tour._id %>"><%= tour.title %></a>
+                            </td>
+                            <td>Asizy</td>
+                            <td><a href="/edit-tour/<%= tour._id %>" class="edit">Edit</a></td>
+                            <td>
+                                <form action="/delete-tour/<%= tour._id %>?_method=DELETE" method="post">
+                                    <input type="submit" value="Delete" class="delete">
+                                </form>
+                            </td>
+                            <td><a href="#" class="publish">Publish</a></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+            <% if (congoTours.length === 0) { %>
+                <p>No tours found.</p>
+            <% } %>
+        </section>
+        <section id="ws">
+            <h2 class="section-heading">Wildlife Safaris</h2>
+            <div class="button-group">
+                <a href="/add-ws" class="admin-btn">Add New Wildlife Safari</a>
+            </div>
+            <table>
+                <thead>
+                    <th>SN</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th colspan="3">Action</th>
+                </thead>
+                <tbody>
+                    <% congoWildlifeSafaris.forEach(function(wildlifeSafari, index) { %>
+                        <tr>
+                            <td><%= index + 1 %></td>
+                            <td>
+                                <a href="/content-ws/<%= wildlifeSafari._id %>"><%= wildlifeSafari.title %></a>
+                            </td>
+                            <td>Asizy</td>
+                            <td><a href="/edit-ws/<%= wildlifeSafari._id %>" class="edit">Edit</a></td>
+                            <td>
+                                <form action="/delete-post/<%= wildlifeSafari._id %>?_method=DELETE" method="post">
+                                    <input type="submit" value="Delete" class="delete">
+                                </form>
+                            </td>
+                            <td><a href="#" class="publish">Publish</a></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+            <% if (congoWildlifeSafaris.length === 0) { %>
+                <p>No wildlife safaris found.</p>
+            <% } %>
+        </section>
+        <section id="a">
+            <h2 class="section-heading">Activities</h2>
+            <div class="button-group">
+                <a href="/add-activity" class="admin-btn">Add New Holiday Activity</a>
+            </div>
+            <table>
+                <thead>
+                    <th>SN</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th colspan="3">Action</th>
+                </thead>
+                <tbody>
+                    <% congoActivities.forEach(function(activity, index) { %>
+                        <tr>
+                            <td><%= index + 1 %></td>
+                            <td>
+                                <a href="/content-activities/<%= activity._id %>"><%= activity.title %></a>
+                            </td>
+                            <td>Asizy</td>
+                            <td><a href="/edit-activity/<%= activity._id %>" class="edit">Edit</a></td>
+                            <td>
+                                <form action="/delete-activity/<%= activity._id %>?_method=DELETE" method="post">
+                                    <input type="submit" value="Delete" class="delete">
+                                </form>
+                            </td>
+                            <td><a href="#" class="publish">Publish</a></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+            
+            <% if (congoActivities.length === 0) { %>
+                <p>No activities found.</p>
+            <% } %>
+        </section>
+
+        <section id="d">
+            <h2 class="section-heading">Destinations</h2>
+            <div class="button-group">
+                <a href="/add-destinations" class="admin-btn">Add New Destination</a>
+            </div>
+            <table>
+                <thead>
+                    <th>SN</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th colspan="3">Action</th>
+                </thead>
+                <tbody>
+                    <% congoDestinations.forEach(function(destination, index) { %>
+                        <tr>
+                            <td><%= index + 1 %></td>
+                            <td>
+                                <a href="/content-destinations/<%= destination._id %>"><%= destination.title %></a>
+                            </td>
+                            <td>Asizy</td>
+                            <td><a href="/edit-destinations/<%= destination._id %>" class="edit">Edit</a></td>
+                            <td>
+                                <form action="/delete-destinations/<%= destination._id %>?_method=DELETE" method="post">
+                                    <input type="submit" value="Delete" class="delete">
+                                </form>
+                            </td>
+                            <td><a href="#" class="publish">Publish</a></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+            <% if (congoDestinations.length === 0) { %>
+                <p>No destinations found.</p>
+            <% } %>
+        </section>
+    </div>
+
+</div>

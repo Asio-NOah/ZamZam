@@ -1,0 +1,108 @@
+<header class="pageheader" id="navBar">
+    <nav class="nav-bar">
+        <div class="logo">
+            <img src="./Images/TW-logo.png" alt="Travel Wonders" width="100" height="70">
+        </div>
+
+        <ul class="menu">
+            <li><a class="nav-link" href="/">Home</a></li>
+            <li class="dropdown-btn"><a class="nav-link"  href="#">Gorilla Safaris</a>
+                <div class="dropdown">
+                    <ul class="">
+                        <li><a href="/gorilla-safari-uganda">Gorilla Safaris in Uganda</a></li>
+                        <li><a href="/gorilla-safari-congo">Gorilla Safaris in Congo</a></li>
+                        <li><a href="/gorilla-safari-rwanda">Gorilla Safaris in Rwanda</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li><a class="nav-link" href="#">Destinations</a>
+                <div class="dropdown">
+                    <ul class="">
+                        <li><a href="#">Uganda</a>
+                            <div class="dropdown-2">
+                                <ul class="">
+                                    <li><a href="/uganda-safaris">Uganda Wildlife Safaris</a></li>
+                                    <li><a href="/uganda-tours">Uganda Tours</a></li>
+                                    <li><a href="/uganda-activities">Uganda Holiday Activities</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="#">Kenya</a>
+                            <div class="dropdown-2">
+                                <ul class="">
+                                    <li><a href="/kenya-safaris">Kenya Wildlife Safaris</a></li>
+                                    <li><a href="/kenya-tours">Kenya Tours</a></li>
+                                    <li><a href="/kenya-activities">Kenya Holiday Activities</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="#">Tanzania</a>
+                            <div class="dropdown-2">
+                                <ul class="">
+                                    <li><a href="tz-safaris">Tanzania Wildlife Safaris</a></li>
+                                    <li><a href="tz-tours">Tanzania Tours</a></li>
+                                    <li><a href="tz-activities">Tanzania Holiday Activities</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="#">Rwanda</a>
+                            <div class="dropdown-2">
+                                <ul class="">
+                                    <li><a href="/rwanda-safaris">Rwanda Wildlife Safaris</a></li>
+                                    <li><a href="/rwanda-tours">Rwanda Tours</a></li>
+                                    <li><a href="/rwanda-activities">Rwanda Holidays</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="dropdown-btn"><a class="nav-link" href="/aboutus">About Us</a>
+                <div class="dropdown">
+                    <ul class="">
+                        <li><a href="#t-policy">Responsible travel policy </a></li>
+                        <li><a href="#">Help & FAQ</a></li>
+                        <li><a href="#why-us">Why Travel Wonders</a></li>
+                        <li><a href="#">Contact us</a></li>
+                        <li><a href="#">Privacy policy</a></li>
+                        <li><a href="#">New norms and safari guides</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+
+        <div class="menu-container">
+            <div class="nav-search">
+                <button onclick="showSearchInput()" class="search-icon" id="searchIcon">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+
+            <div class="quote">
+                <button class="enquiry__button"><a href="Enquiry.html">GET QUOTE</a></button>
+            </div>
+            
+            <div class="container nav-menu" onclick="myFunction(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+        </div>
+
+            
+    </nav>
+    <div >
+        
+        <form action="/search" method="post" class="search-input" id="myDIV" >
+                
+            <input type="search" name="searchTerm" placeholder="Search.." >
+
+            <button type="submit" class="search-icon">
+                <i class="fas fa-search"></i>
+            </button>
+         
+        </form>
+
+    </div>
+
+</header>

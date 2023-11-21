@@ -1,0 +1,117 @@
+<div class="page-container">
+
+    <div class="banner">
+
+        <div class="slider">
+
+            <img src="/img/QENP-302.jpg" alt="" id="slideImg">
+            
+        </div>
+
+        <div class="overlay">
+            <p>Welcome to Uganda, the Pearl of Africa</p>
+            <div class="buttons">
+                <div class="btn-for expert">
+                    <a href="#">Enquire Now</a>
+                </div>
+                <div class="btn-for tour">
+                    <a href="#">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+    <div class="page-main-content">
+    <!-- Main-Content -->
+    <div class="main-content">
+
+        <!-- Uganda Intro -->
+        <div class="destination-intro">
+            <h1 class="heading">Uganda Tours</h1>
+            
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At minima explicabo eos atque aperiam provident libero, architecto numquam, incidunt veniam labore necessitatibus hic, temporibus earum quia! Voluptatem ullam eum quae facere itaque blanditiis mollitia ab quisquam facilis recusandae nam sapiente, fugiat, obcaecati maxime laudantium optio vel id dolores deleniti sint doloribus error cupiditate a! A quia exercitationem modi, sunt, iusto pariatur corporis corrupti voluptatem illo eaque accusantium, quos unde. Magni aliquid voluptas qui autem tempore?<br> Porro labore impedit vitae autem quasi veniam natus sit explicabo qui iure! Dolores praesentium ducimus natus ratione vel repudiandae? Dignissimos facere eaque architecto! Nostrum laudantium dicta odit molestiae, libero unde doloribus atque cumque veniam error quia aliquam. Earum minima soluta saepe id natus <br> Libero temporibus saepe porro natus ab tenetur culpa maxime ad, nemo, doloribus adipisci doloremque. Nihil nostrum tempora quod deleniti quibusdam inventore dolor soluta enim ducimus, ab exercitationem adipisci recusandae magni ipsam nesciunt!
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam sunt laboriosam eligendi, nisi quod quae error porro sint iste ipsa saepe vitae, provident fugit rerum non fugiat neque repudiandae dicta quasi, optio ea nobis! <br>Adipisci est facilis, vitae sequi veniam, ducimus amet magnam consequatur error quod aliquid quis quasi laudantium nihil tenetur iste eaque ut? Numquam quo, perferendis autem eum iure amet quasi assumenda dolorum, tempora necessitatibus doloribus. Explicabo distinctio, illum recusandae nihil vel facere quibusdam quas alias assumenda, veniam aliquid saepe, dolorum velit molestiae maiores nobis cum nisi incidunt quidem. <br> Culpa, quis iure, delectus aspernatur consequuntur voluptas dolor sed dolorum nihil consequatur fuga! Qui ab rem omnis rerum nihil velit expedita veniam? Aliquam animi quas dolore quo velit veniam!
+            </p>
+        </div>
+
+         <!-- Other Safaris -->
+         <div class="other-safaris">
+
+            <h1 class="slider-title heading">Uganda Tour Packages</h1>
+    
+            <div class="best-safari-content">
+                <% if (ugandaTours.length > 0) { %>
+    
+                    <% ugandaTours.forEach(function(tour) { %>
+                
+                    <div class="safari">
+                        <div class="slider-image">
+                            <img src="data:<%= tour.image.contentType %>;base64,<%= tour.image.data.toString('base64') %>" alt="<%= tour.title %> Photo">
+                        </div>
+                        <div class="safari-info">
+                            <h4><a href="/content-tours/<%= tour._id %>"><%= tour.title %></a></h4>
+                            <p><%- tour.preview %></p>
+                            <div class="details">
+                                <div class="calendar">
+                                    <i class="fa-regular fa-calendar-days"></i>
+                                    <p><%= tour.days %></p>
+                                </div>
+                                <p><%= tour.price %></p>
+                            </div>
+                            <div class="btn">
+                                <a href="/content-tours/<%= tour._id %>">See Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <% }); %>
+                    <% } %>
+      
+                  <% if (nextPage !== null) { %>
+                      <div class="btn">
+                          <a href="uganda-tours/?page=<%= nextPage %>">See More</a>
+                      </div>
+                  <% } %>
+            
+    </div>
+        </div>
+    
+        <div class="enquire-section">
+            <h1>Doesn't the above package meet your needs?</h1>
+            <p>Let us help you plan your special package with our Travel Experts.</p>
+            <div class="buttons">
+                <div class="btn-for expert">
+                    <a href="#">Our Travel Experts</a>
+                </div>
+                <div class="btn-for tour">
+                    <a href="#">Customize Your Tour</a>
+                </div>
+            </div>
+        </div>
+        <!-- Side bar -->
+        <div class="bottom-content">
+            <!-- Trending Gorilla Safaris -->
+    
+            <div class="other-safaris">
+    
+                <h1 class="slider-title heading">Our Other Safari Packages</h1>
+    
+                <div class="other-safaris-content">
+                    <% allPackages.forEach(package => { %>
+                        <div class="safari">
+                            <div class="slider-image">
+                                <img src="data:<%= package.image.contentType %>;base64,<%= package.image.data.toString('base64') %>" alt="<%= package.title %> Photo">
+                            </div>
+                            <div class="safari-info">
+                                <h4><a href="/content/<%= package._id %>"><%= package.title %></a></h4>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+                
+            </div>
+        </div>
+    
+    
+    </div>
+    

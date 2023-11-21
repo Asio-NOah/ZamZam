@@ -1,0 +1,114 @@
+<div class="page-container">
+
+    <div class="banner">
+
+        <div class="slider">
+
+            <img src="/img/header.jpg" alt="" id="slideImg">
+            
+        </div>
+
+        <div class="overlay">
+            <p>About Us</p>
+            <ul>
+                <li><a href="#">Lorem.</a></li>
+                <li><a href="#">Lorem.</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="page-main-content">
+        <!-- Main Content -->
+        <div class="main-content about-page">
+            <article class="intro-aboutus" id="about-us">
+                <h2>Eco wonders safaris</h2>
+                <p>Eco wonders safaris is an indigenous Uganda  based tour company that provides memorable experiences in sightseeing adventure safaris, to both inbound and out bound tourists with maximum satisfaction to tourists, we offer trips depending on the indigenous knowledge and experience that we hold on various destinations, however we also offer trips depending on the tourists interests to a destination</p>
+            </article>
+
+            <section id="projects" class="featured-projects abt-page">
+                <div class="container">
+            
+                    <!-- aboutus info headings -->
+                    <ul class="service-menu">
+                        <li class="active" data-service="travel-policy">Responsible travel policy</li>
+                        <li data-service="help-and-faq">Help & FAQ</li>
+                        <li data-service="why-travel">Why Travel Wonders</li>
+                        <li data-service="contact-us">Contact us</li>
+                        <li data-service="privacy-policy">Privacy policy</li>
+                        <li data-service="new-norms">New norms and safari guides</li>
+                    </ul>
+            
+                    <!-- aboutus info -->
+                    <% aboutUsContent.forEach(function(aboutUs) { %>
+                    <div class="project-cards">
+                        <div class="project" data-service="travel-policy">
+                            <div class="project-details aboutus">
+                                <h3>Responsible travel policy</h3>
+                                <p><%= aboutUs.responsibleTravelPolicy %></p>
+                            </div>
+                        </div>
+                        <div class="project" data-service="help-and-faq">
+                            <div class="project-details aboutus">
+                                <h3>Help & FAQ</h3>
+                                <p><%= aboutUs.helpAndFAQ %></p>
+                            </div>
+                        </div>
+                        <div class="project" data-service="why-travel">
+                            <div class="project-details aboutus">
+                                <h3>Why Travel Wonders</h3>
+                                <p><%= aboutUs.whyTravelWonders %></p>
+                            </div>
+                        </div>
+                        <div class="project" data-service="contact-us">
+                            <div class="project-details aboutus">
+                                <h3>Contact us</h3>
+                                <p><%= aboutUs.contactUs %></p>
+                            </div>
+                        </div>
+                        <div class="project" data-service="privacy-policy">
+                            <div class="project-details aboutus">
+                                <h3>Privacy policy</h3>
+                                <p><%= aboutUs.privacyPolicy %></p>
+                            </div>
+                        </div>
+                        <div class="project" data-service="new-norms">
+                            <div class="project-details aboutus">
+                                <h3>New norms and safari guides</h3>
+                                <p><%= aboutUs.newNormsAndSafariGuides %></p>
+                            </div>
+                        </div>
+                    </div>
+                    <% }); %>
+                </div>
+            </section>
+        </div>
+
+        <section id="contact" class="contact abt-page">
+            <div class="container">
+              <h2>Contact Us</h2>
+              <p>We'd love to hear from you. Reach out to us with any questions or inquiries.</p>
+          
+              <div class="contact-form">
+                <form action="/send-email" method="post">
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                  </div>
+          
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                  </div>
+          
+                  <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                  </div>
+          
+                  <button type="submit" class="cta-button">Send Message</button>
+                </form>
+              </div>
+            </div>
+          </section>
+    </div>
+</div>

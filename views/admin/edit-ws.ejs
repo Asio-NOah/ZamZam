@@ -1,0 +1,102 @@
+<div class="admin_wrapper">
+
+    <div class="left-sidebar">
+        <ul>
+            <li><a href="#gs">Manage Gorilla Safaris</a></li>
+            <li><a href="#t">Manage Tours</a></li>
+            <li><a href="#ws">Manage Wildlife Safaris</a></li>
+            <li><a href="#a">Manage Activities</a></li>
+        </ul>
+    </div>
+    
+    <div class="admin-content">
+
+        <h1 class="admin-heading">Wildlife Safari</h1>
+
+        <div class="content">
+            <h2 class="page-title">Edit Wildlife Safari</h2>
+
+            <div>
+                <form action="/delete-ws?_method=DELETE" method="post">
+                    <button type="submit" class="btn admin-btn">Delete this Wildlife Safari</button>
+                </form>
+            </div>
+            
+            <form action="/edit-ws/<%= wildlifeSafari._id %>" method="POST" enctype="multipart/form-data" class="add-post">
+                <div class="input-box">
+                    <label for="country">Country</label>
+                    <select name="country" class="select-input">
+                        <option value="Uganda" <%= wildlifeSafari.country === 'Uganda' ? 'selected' : '' %>>Uganda</option>
+                        <option value="Kenya" <%= wildlifeSafari.country === 'Kenya' ? 'selected' : '' %>>Kenya</option>
+                        <option value="Tanzania" <%= wildlifeSafari.country === 'Tanzania' ? 'selected' : '' %>>Tanzania</option>
+                        <option value="Rwanda" <%= wildlifeSafari.country === 'Rwanda' ? 'selected' : '' %>>Rwanda</option>
+                        <option value="Congo" <%= wildlifeSafari.country === 'Congo' ? 'selected' : '' %>>Congo</option>
+                    </select>
+                </div>
+            
+                <div class="input-box">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" id="title" class="text-input" value="<%= wildlifeSafari.title %>">
+                </div>
+            
+                <div class="input-box">
+                    <label for="overview">Tour Overview</label>
+                    <textarea name="overview" id="mytextarea" cols="50" rows="10" class="text-input"><%= wildlifeSafari.overview %></textarea>
+                </div>
+            
+                <div class="input-box">
+                    <label for="days">Number of days</label>
+                    <input name="days" id="body" class="text-input" value="<%= wildlifeSafari.days %>">
+                </div>
+                <div class="input-box">
+                    <label for="price">Price</label>
+                    <input name="price" id="mytextarea" class="text-input" value="<%= wildlifeSafari.price %>">
+                </div>
+            
+                <div class="input-box">
+                    <label for="disclaimer">Price Disclaimer</label>
+                    <textarea name="disclaimer" id="mytextarea" cols="50" rows="10" class="text-input"><%= wildlifeSafari.disclaimer %></textarea>
+                </div>
+
+                <div class="input-box">
+                    <label for="details">Details of cost</label>
+                    <textarea name="details" id="mytextarea" cols="50" rows="10" class="text-input"><%= wildlifeSafari.details %></textarea>
+                </div>
+
+                <div class="input-box">
+                    <label for="when">When best to visit</label>
+                    <textarea name="when" id="mytextarea" cols="50" rows="10" class="text-input"><%= wildlifeSafari.when %></textarea>
+                </div>
+            
+                <div class="input-box">
+                    <label for="accommodation">Accommodation</label>
+                    <textarea name="accommodation" id="mytextarea" cols="50" rows="10" class="text-input"><%= wildlifeSafari.accommodation %></textarea>
+                </div>
+                
+                <div class="input-box">
+                    <label for="preview">Preview</label>
+                    <textarea name="preview" id="mytextarea" cols="50" rows="10" class="text-input"><%= wildlifeSafari.preview %></textarea>
+                </div>
+            
+                <div class="input-box">
+                    <label for="itinerary">Itinerary</label>
+                    <textarea name="itinerary" id="mytextarea" cols="50" rows="10" class="text-input"><%= wildlifeSafari.itinerary %></textarea>
+                </div>
+            
+                <div class="input-box">
+                    <label for="header-image">Header Image</label>
+                    <input type="file" name="header-image" id="img-input" >
+                </div>
+            
+                <div class="input-box">
+                    <label for="image">Image</label>
+                    <input type="file" name="image" id="img-input" >
+                </div>
+              
+                <div>
+                    <input type="submit" class="btn admin-btn" value="Save Changes to Wildlife Safari">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,207 @@
+<div class="page-container">
+
+    <div class="banner">
+
+        <div class="slider">
+
+            <img src="/img/QENP-302.jpg" alt="" id="slideImg">
+            
+        </div>
+
+        <div class="overlay">
+            <p>Welcome to ZAM ZAMOfficial website</p>
+            <div class="buttons">
+                <div class="btn-for expert">
+                    <a href="#">Enquire Now</a>
+                </div>
+                <div class="btn-for tour">
+                    <a href="#">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popular-safaris">
+        <div class="safari-slider">
+            <h1 class="slider-title heading">Our trending <span>safaris</span></h1>
+            <i class="fa-solid fa-chevron-left prev"></i>
+    
+            <i class="fa-solid fa-chevron-right next"></i>
+    
+            <div class="safari-wrapper">
+                <% if (popularPackages && popularPackages.length) { %>
+                    <% popularPackages.forEach(package => { %>
+                        <div class="safari">
+                            <div class="slider-image">
+                                <img src="data:<%= package.image.contentType %>;base64,<%= package.image.data.toString('base64') %>" alt="<%= package.title %> Photo">
+                            </div>
+                            <div class="safari-info">
+                                <h4><a href="content/<%= package._id %>"><%= package.title %></a></h4>
+                                <p>
+                                    <%- package.preview %>
+                                </p>
+                                <div class="details">
+                                    <div class="calendar">
+                                        <i class="fa-regular fa-calendar-days"></i>
+                                        <p><%= package.days %> </p>
+                                    </div>
+                                    <p><%= package.price %></p>
+                                </div>
+                                <div class="btn">
+                                    <a href="content/<%= package._id %>">See Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    <% }); %>
+                <% } else { %>
+                    <p>No popular packages found.</p>
+                <% } %>
+            </div>
+        </div>
+        <!-- safari slider -->
+    </div>
+    
+
+   <div class="page-main-content">
+        <!-- Main Content -->
+        <div class="main-content">
+
+            <div class="best-safaris">
+
+                <h1 class="slider-title heading">Our Best Destinations</h1>
+                <% destinations.forEach(destination => { %>
+                <div class="best-safari-content">
+                    <div class="safari">
+                        <div class="safari-image">
+                            <img src="data:<%= destination.image.contentType %>;base64,<%= destination.image.data.toString('base64') %>" alt="<%= destination.title %> Photo">
+                        </div>
+                        <h4 class=" disappear"><i class="fa-solid fa-location-dot"></i><a href="/">Kampal, Uganda's Capital</a></h4>
+                        <div class="safari-layer">
+                            <h4 class=""><i class="fa-solid fa-location-dot"></i><a href="/content-destinations/<%= destination._id %>"><%= destination.title %></a></h4>
+                            <p>
+                                <%- destination.preview %>
+                            </p>
+                            <div class="details">
+                                <div class="calendar">
+                                    <i class="fa-regular fa-calendar-days"></i>
+                                    <p><%= destination.days %></p>
+                                </div>
+                                <p><%= destination.price%></p>
+                            </div>
+                            <div class="btn">
+                                <a href="/content-destinations/<%= destination._id %>">See Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% }) %>
+            </div>
+
+            <!-- why Zam zam Safaris -->
+            <div class="intro"> 
+                <div class="intro-heading">
+                    <h1>Why should you choose Zam Zam Tours</h1>
+                </div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam sequi omnis error adipisci rem sint eveniet ipsa, nulla, corporis similique repellendus temporibus! Iste sit libero, cupiditate veritatis rerum ex qui?</p>
+                <div class="read-more">
+                    <a href="#">Read More  <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+            <!-- Other Safaris -->
+            <div class="other-safaris">
+                <h1 class="slider-title heading">Trending Gorilla Safari Packages</h1>
+                <div class="other-safaris-content">
+                    <% if (popularGorillaSafaris.length === 0) { %>
+                        <p>No popular gorilla safaris found.</p>
+                    <% } else { %>
+                        <% popularGorillaSafaris.forEach(safari => { %>
+                            <div class="safari">
+                                <div class="slider-image">
+                                    <img src="<%= safari.image %>" alt="">
+                                </div>
+                                <div class="safari-info">
+                                    <h4><a href="/content/<%= safari._id %>"><%= safari.name %></a></h4>
+                                    <p><%- safari.preview %></p>
+                                    <div class="details">
+                                        <div class="calendar">
+                                            <i class="fa-regular fa-calendar-days"></i>
+                                            <p><%= safari.days %></p>
+                                        </div>
+                                        <p><%= safari.price %></p>
+                                    </div>
+                                    <div class="btn">
+                                        <a href="/content/<%= safari._id %>">See Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }); %>
+                    <% } %>
+                    
+                </div>
+            </div>
+            
+
+            <div class="enquire-section">
+                <h1>Failed to find a tour that meets your needs?</h1>
+                <p>Let us help you plan your tour with our Travel Experts.</p>
+                <div class="buttons">
+                    <div class="btn-for expert">
+                        <a href="#">Our Travel Experts</a>
+                    </div>
+                    <div class="btn-for tour">
+                        <a href="#">Customize Your Tour</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Middle -->
+        <!-- <section class="middle-content">
+
+            <div class="faqs">
+                <h1>Frequently Asked Questions</h1>
+
+                <ul>
+                    <li><a href="#">How much does a safari in Bundibugyo cost?</a></li>
+                    <li><a href="#">How much does a safari in Bundibugyo cost?</a></li>
+                    <li><a href="#">How much does a safari in Bundibugyo cost?</a></li>
+                    <li><a href="#">How much does a safari in Bundibugyo cost?</a></li>
+                </ul>
+            </div>
+        </section> -->
+
+        <div class="more-content">
+        <div class="bottom-content">
+    
+            <div class="other-safaris">
+    
+                <h1 class="slider-title heading">Our Other Safari Packages</h1>
+    
+                <div class="other-safaris-content">
+                    <% allPackages.forEach(package => { %>
+                        <div class="safari">
+                            <div class="slider-image">
+                                <img src="data:<%= package.image.contentType %>;base64,<%= package.image.data.toString('base64') %>" alt="<%= package.title %> Photo">
+                            </div>
+                            <div class="safari-info">
+                                <h4><a href="/content/<%= package._id %>"><%= package.title %></a></h4>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+                
+            </div>
+        </div>
+        </div>
+        
+    
+    
+    </div>
+   </div>
+
+    
+    <div id="myButton"></div>
+
+</div>

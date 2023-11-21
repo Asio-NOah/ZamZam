@@ -1,0 +1,77 @@
+<div class="page-container">
+
+    <div class="banner">
+
+        <div class="slider">
+
+            <img src="/img/A baby mountain wild gorilla kisses his mother.jpg" alt="" id="slideImg-ug">
+            
+        </div>
+
+        <div class="overlay">
+            <p>Welcome to Congo</p>
+            <div class="buttons">
+                <div class="btn-for expert">
+                    <a href="#">Enquire Now</a>
+                </div>
+                <div class="btn-for tour">
+                    <a href="#">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+    <div class="page-main-content">
+        <!-- Main-Content -->
+        <div class="main-content">
+
+            <div class="intro">
+                <h2 class="heading"><%= faq.qstn %></h2>
+
+                <div class="faq-content">
+                    <p>
+                        <%- faq.ans %>
+                    </p>
+                </div>
+            </div>
+
+            
+
+            <div class="enquire-section">
+                <h1>Do you want a package close to what you have seen above?</h1>
+                <p>Let us help you plan your special package with our Travel Experts.</p>
+                <div class="buttons">
+                    <div class="btn-for expert">
+                        <a href="#">Our Travel Experts</a>
+                    </div>
+                    <div class="btn-for tour">
+                        <a href="#">Customize Your Tour</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Side bar -->
+            <div class="bottom-content">
+                <!-- Trending Gorilla Safaris -->
+        
+                <div class="other-safaris">
+        
+                    <h1 class="slider-title heading">Take a look at our Packages</h1>
+        
+                    <div class="other-safaris-content">
+                        <% allPackages.forEach(package => { %>
+                            <div class="safari">
+                                <div class="slider-image">
+                                    <img src="data:<%= package.image.contentType %>;base64,<%= package.image.data.toString('base64') %>" alt="<%= package.title %> Photo">
+                                </div>
+                                <div class="safari-info">
+                                    <h4><a href="/content/<%= package._id %>"><%= package.title %></a></h4>
+                                </div>
+                            </div>
+                        <% }); %>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

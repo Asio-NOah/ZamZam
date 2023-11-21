@@ -1,0 +1,52 @@
+<div class="admin_wrapper">
+
+    <div class="left-sidebar">
+        <ul>
+            <li><a href="#gs">Manage Gorilla Safaris</a></li>
+            <li><a href="#t">Manage Tours</a></li>
+            <li><a href="#ws">Manage Wildlife Safaris</a></li>
+            <li><a href="#a">Manage Activities</a></li>
+        </ul>
+    </div>
+    
+    <div class="admin-content">
+
+        <h1 class="admin-heading">Gorilla Safari</h1>
+
+        <div class="content">
+            <h2 class="page-title">Edit Gorilla Safari</h2>
+
+            <div>
+                <form action="/delete-faq?_method=DELETE" method="post">
+                    <button type="submit" class="btn admin-btn">Delete this Faq</button>
+                </form>
+            </div>
+            
+            <form action="/edit-faq/<%= faq._id %>" method="post" enctype="multipart/form-data" class="add-post">
+
+                <div class="input-box">
+                    <label for="qstn">Faq</label>
+                    <input type="text" name="qstn" class="text-input" value="<%= faq.name %>">
+                </div>
+
+                <div class="input-box">
+                    <label for="Description">Description</label>
+                    <textarea name="ans" id="mytextarea" cols="50" rows="10" class="text-input"><%= faq.description %></textarea>
+                </div>
+
+                <div class="input-box">
+                    <label for="ans">Answer</label>
+                    <textarea name="ans" id="mytextarea" cols="50" rows="10" class="text-input"><%= faq.ans %></textarea>
+                </div>
+
+              
+                <div>
+                    <input type="submit" class="btn admin-btn" value="Save Changes to Faq">
+                </div>
+            </form>
+            
+
+        </div>
+    </div>
+
+</div>

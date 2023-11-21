@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content=' <%= locals.description %>'>
+    <link rel="stylesheet" href="floating-wpp.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/floating-wpp.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="floating-wpp.js"></script>
+    <script src="https://kit.fontawesome.com/92ebb82932.js" crossorigin="anonymous"></script>
+    <script src="/js/script.js"></script>
+    <title><%= locals.title %></title>
+</head>
+<body >
+
+    <div class="container">
+
+        <%- include('../partials/header.ejs') %>
+
+        <div class="main">
+
+            <%- body %>
+
+        </div>
+
+        <%- include('../partials/footer.ejs') %>
+
+    </div>
+    
+</body>
+<script type="text/javascript">
+    $(function () {
+        $('#myButton').floatingWhatsApp({
+            phone: '5491133359850',
+            popupMessage: 'Hey there! Let us help you plan an amazing African safari.',
+            message: "I'd like to",
+            showPopup: true,
+            showOnIE: false,
+            headerTitle: 'Welcome!',
+            headerColor: 'green',
+            backgroundColor: 'crimson',
+            buttonImage: '<img src="./images/whatsapp.svg" />'
+        });
+    });
+</script>
+<script>
+    var slideImg = document.getElementById("slideImg");
+
+    var images = [
+        "/img/QENP-302.jpg",
+        "/img/Rhino.jpg",
+        "/img/LMNP-1053.jpg"
+    ];
+
+    let i = 0;
+
+    function slider() {
+        if (i >= images.length) {
+            i = 0;
+        }
+        slideImg.src = images[i];
+        i++;
+        setTimeout(slider, 6000);
+    }
+
+    slider();
+</script>
+<script>
+     $(document).ready(function() {
+            $('.safari-wrapper').slick({
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 3000,
+                nextArrow: $('.next'),
+                prevArrow: $('.prev'),
+                responsive: [
+                {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                }
+                },
+                {
+                breakpoint: 900,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+                },
+                {
+                breakpoint: 580,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+                }
+                    // You can unslick at a given breakpoint now by adding:
+                    // settings: "unslick"
+                    // instead of a settings object
+                ]
+            });    
+        }); 
+
+           // JavaScript/jQuery for filtering projects by service
+
+    $(document).ready(function () {
+    // Initially, show only the project with data-service="travel-policy"
+    $(".project").hide();
+    $(".project[data-service='travel-policy']").show();
+
+    // Click event handler for service menu items
+    $(".service-menu li").click(function () {
+        // Remove the 'active' class from all menu items
+        $(".service-menu li").removeClass("active");
+
+        // Add 'active' class to the clicked menu item
+        $(this).addClass("active");
+
+        // Get the service category from the 'data-service' attribute
+        const serviceCategory = $(this).data("service");
+
+        // Show projects that match the selected service category
+        if (serviceCategory === "all") {
+            $(".project").show();
+        } else {
+            // Hide all projects and then show the ones that match the category
+            $(".project").hide();
+            $(`.project[data-service="${serviceCategory}"]`).show();
+        }
+    });
+});
+
+$(document).ready(function () {
+    // Initially, show only the content-section with data-service="itinerary"
+    $(".content-section").hide();
+    $(".content-section[data-service='itinerary']").show();
+
+    // Click event handler for menu items
+    $(".menu-link li").click(function () {
+        // Remove the 'active' class from all menu items
+        $(".menu-link li").removeClass("active");
+
+        // Add 'active' class to the clicked menu item
+        $(this).addClass("active");
+
+        // Get the service category from the 'data-service' attribute
+        const serviceCategory = $(this).data("service");
+
+        // Show content-section that matches the selected service category
+        $(".content-section").hide();
+        $(`.content-section[data-service="${serviceCategory}"]`).show();
+    });
+});
+
+
+</script>
+<script>
+   const sidebar = document.querySelector('.content-content .side-bar');
+const mainContent = document.querySelector('.content-content .main-content');
+
+function handleScroll() {
+    const { y: mainContentY, height: mainContentHeight } = mainContent.getBoundingClientRect();
+    const { height: sidebarHeight } = sidebar.getBoundingClientRect();
+
+    const footer = document.querySelector('footer');
+    const { y: footerY } = footer.getBoundingClientRect();
+
+    if (mainContentY <= 0 && footerY >= window.innerHeight - sidebarHeight) {
+        sidebar.style.top = '0';
+        sidebar.style.bottom = 'auto';
+    } else if (footerY < window.innerHeight - sidebarHeight) {
+        sidebar.style.top = 'auto';
+        sidebar.style.bottom = '0';
+    } else {
+        sidebar.style.top = '0';
+        sidebar.style.bottom = 'auto';
+    }
+}
+
+window.addEventListener('scroll', handleScroll);
+
+
+$(document).ready(function() {
+    let page = 1;
+    const perPage = 4;
+    const safariContent = $('#safariContent');
+    const showMoreBtn = $('#showMore');
+
+    function loadSafaris(page) {
+    $.ajax({
+        method: 'GET',
+        url: `/get-all-packages?page=${page}`, // Replace with your API route
+        success: function(allPackages) {
+            allPackages.forEach(package => {
+                safariContent.append(`
+                    <div class="safari">
+                        <div class="slider-image">
+                            <img src="${package.image}" alt="${package.alt}">
+                        </div>
+                        <div class="safari-info">
+                            <h4><a href="${package.link}">${package.title}</a></h4>
+                            <div class="btn">
+                                <a href="#">See Details</a>
+                            </div>
+                        </div>
+                    </div>
+                `);
+            });
+        },
+        error: function(error) {
+            console.error('Error fetching all packages:', error);
+        }
+    });
+}
+
+
+    loadSafaris(page);
+
+    showMoreBtn.click(function(e) {
+        e.preventDefault();
+        page += 1;
+        loadSafaris(page);
+    });
+});
+
+
+</script>
+
+</html>
