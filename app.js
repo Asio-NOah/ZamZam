@@ -28,14 +28,18 @@ app.use('/', require('./server/routes/main'));
 app.use('/', require('./server/routes/admin'));
 app.use(flash());
 app.use(cookieParser());
-app.use(session({
-    secret: 'keyboardcat',
-    resave: false,
-    saveUninitialized: true,
-    store: MongoStore.create({
-        mongoUrl: process.env.MONGODB_URI
-    }),
-}));
+app.use(
+    session({
+      secret: 'keyboardcat',
+      resave: false,
+      saveUninitialized: true,
+      store: MongoStore.create({
+        mongoUrl: process.env.MONGODB_URI,
+        // Add the following line to use native MongoDB driver's client
+        client: connectDB.getClient(), // Make sure to adjust this based on your connectDB implementation
+      }),
+    })
+  );
  
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`)
