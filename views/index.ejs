@@ -33,7 +33,7 @@
                     <% popularPackages.forEach(package => { %>
                         <div class="safari">
                             <div class="slider-image">
-                                <%- package.image %>
+                                <%= package.image %>
                             </div>
                             <div class="safari-info">
                                 <h4><a href="content/<%= package._id %>"><%= package.title %></a></h4>
@@ -73,7 +73,7 @@
                 <div class="best-safari-content">
                     <div class="safari">
                         <div class="safari-image">
-                            <%- destination.image%>
+                            <%= destination.image %>
                         </div>
                         <h4 class=" disappear"><i class="fa-solid fa-location-dot"></i><a href="/">Kampal, Uganda's Capital</a></h4>
                         <div class="safari-layer">
@@ -118,7 +118,7 @@
                         <% popularGorillaSafaris.forEach(safari => { %>
                             <div class="safari">
                                 <div class="slider-image">
-                                    <%- safari.image %>
+                                    <%= safari.image %>
                                 </div>
                                 <div class="safari-info">
                                     <h4><a href="/content/<%= safari._id %>"><%= safari.name %></a></h4>
@@ -183,7 +183,7 @@
                     <% allPackages.forEach(package => { %>
                         <div class="safari">
                             <div class="slider-image">
-                                <%- package.image %>
+                                <%= package.image %>
                             </div>
                             <div class="safari-info">
                                 <h4><a href="/content/<%= package._id %>"><%= package.title %></a></h4>
