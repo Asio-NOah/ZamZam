@@ -50,7 +50,7 @@
                     
                         <div class="safari">
                             <div class="slider-image">
-                                <img src="data:<%= gorillaSafari.image.contentType %>;base64,<%= gorillaSafari.image.data.toString('base64') %>" alt="<%= gorillaSafari.title %> Photo">
+                                <%- gorillaSafari.image %>
                             </div>
                             <div class="safari-info">
                                 <h4><a href="/content-gs/<%= gorillaSafari._id %>"><%= gorillaSafari.title %></a></h4>
@@ -202,7 +202,7 @@
                 <% allPackages.forEach(package => { %>
                     <div class="safari">
                         <div class="slider-image">
-                            <img src="data:<%= package.image.contentType %>;base64,<%= package.image.data.toString('base64') %>" alt="<%= package.title %> Photo">
+                            <%- package.image %>
                         </div>
                         <div class="safari-info">
                             <h4><a href="/content/<%= package._id %>"><%= package.title %></a></h4>

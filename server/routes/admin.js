@@ -379,6 +379,63 @@ router.post('/add-gs', authMiddleware, upload.fields([{ name: 'header-image', ma
     }
 });
 
+//Post
+//Admin edit gs
+router.post('/edit-gs/:id', authMiddleware, upload.fields([{ name: 'header-image', maxCount: 1 }, { name: 'image', maxCount: 1 }]), async (req, res) => {
+  try {
+    const gorillaSafariId = req.params.id;
+    const gorillaSafari = await GorillaSafari.findById(gorillaSafariId); // Fetch the gorillaSafari from the database
+
+    const headerImageObject = {
+      data: req.files['header-image'][0].buffer,
+      contentType: req.files['header-image'][0].mimetype
+  };
+
+  const imageObject = {
+      data: req.files['image'][0].buffer,
+      contentType: req.files['image'][0].mimetype
+  };
+    // Update the gorillaSafari properties
+    gorillaSafari.country= req.body.country,
+    gorillaSafari.title= req.body.title,
+    gorillaSafari.overview= req.body.overview,
+    gorillaSafari.days= req.body.days,
+    gorillaSafari.price= req.body.price,
+    gorillaSafari.when= req.body.when, 
+    gorillaSafari.details= req.body.details,
+    gorillaSafari.disclaimer= req.body.disclaimer,
+    gorillaSafari.accommodation= req.body.accommodation,
+    gorillaSafari.preview= req.body.preview,
+    gorillaSafari.itinerary= req.body.itinerary,
+    gorillaSafari.headerImage= headerImageObject,
+    gorillaSafari.image= imageObject
+
+    await gorillaSafari.save(); // Save the updated gorillaSafari
+
+    res.redirect('/admin');
+    req.flash('success', 'GorillaSafari Updated'); // Redirect to the latest-projects page
+  } catch (error) {
+    console.error(error);
+    // Handle error response
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+/**
+* DELETE POST
+* Admin Delete Gorilla Safari
+*/
+router.delete('/delete-gs/:id', authMiddleware, async (req, res) => {
+
+  try {
+      await GorillaSafari.deleteOne( { _id: req.params.id });
+      res.redirect('/admin');
+      req.flash('success', 'Post Deleted');
+  } catch (error) {
+      console.log(error);
+  }
+});
+
 // Get Admin add tour
 router.get('/add-tours', authMiddleware, (req, res) => {
     const locals = {
@@ -882,62 +939,7 @@ router.delete('/delete-activity/:id', authMiddleware, async (req, res) => {
 });
 
 
-//Post
-//Admin edit gs
-router.post('/edit-gs/:id', authMiddleware, upload.fields([{ name: 'header-image', maxCount: 1 }, { name: 'image', maxCount: 1 }]), async (req, res) => {
-    try {
-      const gorillaSafariId = req.params.id;
-      const gorillaSafari = await GorillaSafari.findById(gorillaSafariId); // Fetch the gorillaSafari from the database
-  
-      const headerImageObject = {
-        data: req.files['header-image'][0].buffer,
-        contentType: req.files['header-image'][0].mimetype
-    };
 
-    const imageObject = {
-        data: req.files['image'][0].buffer,
-        contentType: req.files['image'][0].mimetype
-    };
-      // Update the gorillaSafari properties
-      gorillaSafari.country= req.body.country,
-      gorillaSafari.title= req.body.title,
-      gorillaSafari.overview= req.body.overview,
-      gorillaSafari.days= req.body.days,
-      gorillaSafari.price= req.body.price,
-      gorillaSafari.when= req.body.when, 
-      gorillaSafari.details= req.body.details,
-      gorillaSafari.disclaimer= req.body.disclaimer,
-      gorillaSafari.accommodation= req.body.accommodation,
-      gorillaSafari.preview= req.body.preview,
-      gorillaSafari.itinerary= req.body.itinerary,
-      gorillaSafari.headerImage= headerImageObject,
-      gorillaSafari.image= imageObject
-  
-      await gorillaSafari.save(); // Save the updated gorillaSafari
-  
-      res.redirect('/admin');
-      req.flash('success', 'GorillaSafari Updated'); // Redirect to the latest-projects page
-    } catch (error) {
-      console.error(error);
-      // Handle error response
-      res.status(500).json({ error: 'Internal server error' });
-    }
-  });
-
-/**
- * DELETE POST
- * Admin Delete Post
- */
-router.delete('/delete-gs/:id', authMiddleware, async (req, res) => {
-
-    try {
-        await GorillaSafari.deleteOne( { _id: req.params.id });
-        res.redirect('/admin');
-        req.flash('success', 'Post Deleted');
-    } catch (error) {
-        console.log(error);
-    }
-});
 
 // GET About Us page
 router.get('/about-Us', async (req, res) => {

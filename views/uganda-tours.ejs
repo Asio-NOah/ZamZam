@@ -47,7 +47,7 @@
                 
                     <div class="safari">
                         <div class="slider-image">
-                            <img src="data:<%= tour.image.contentType %>;base64,<%= tour.image.data.toString('base64') %>" alt="<%= tour.title %> Photo">
+                            <%- tour.image%>
                         </div>
                         <div class="safari-info">
                             <h4><a href="/content-tours/<%= tour._id %>"><%= tour.title %></a></h4>
@@ -100,7 +100,7 @@
                     <% allPackages.forEach(package => { %>
                         <div class="safari">
                             <div class="slider-image">
-                                <img src="data:<%= package.image.contentType %>;base64,<%= package.image.data.toString('base64') %>" alt="<%= package.title %> Photo">
+                                <%- package.image %>
                             </div>
                             <div class="safari-info">
                                 <h4><a href="/content/<%= package._id %>"><%= package.title %></a></h4>
