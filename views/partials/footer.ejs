@@ -12,6 +12,9 @@
                 <% faqs.forEach(faq => { %>
                     <li><a href="/content-faq/<%= faq._id %>"><%= faq.qstn %></a></li>
                 <% }); %>
+                <% if (faqs.length === 0) { %>
+                    <p>No Frequently Asked Questions.</p>
+                <% } %>
             </ul>
         </div>
         <div class="footer__contacts">
