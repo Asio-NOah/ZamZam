@@ -45,10 +45,12 @@ router.get('/login', async (req,  res) => {
         const locals = {
             title: "Login",
         }
+        const faqs = await Faq.find();
     
         res.render('admin/login', { 
             locals, 
-            currentPage: 'login'
+            currentPage: 'login',
+            faqs
         });
     } catch (error) {
         console.log('error');
@@ -66,10 +68,12 @@ router.get('/register', async (req,  res) => {
         const locals = {
             title: "Register"
         }
+        const faqs = await Faq.find();
     
         res.render('admin/register', { 
             locals, 
-            currentPage: 'register' 
+            currentPage: 'register',
+            faqs
         });
     } catch (error) {
         console.log('error');
