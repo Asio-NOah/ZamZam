@@ -21,7 +21,7 @@ const PORT = 5050 || process.env.PORT;
 //connect to DB
 connectDB();
 
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' })); 
 app.use(bodyParser.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());

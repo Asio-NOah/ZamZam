@@ -347,9 +347,9 @@ router.get('/add-gs', authMiddleware, (req, res) => {
 
 //Post
 //Admin add gorilla safari
-router.post('/add-gs', authMiddleware, upload.fields([{ name: 'header-image', maxCount: 1 }, { name: 'image', maxCount: 1 }]), async (req, res) => {
+router.post('/add-gs', authMiddleware, /* upload.fields([{ name: 'header-image', maxCount: 1 }, { name: 'image', maxCount: 1 }]), */ async (req, res) => {
     try {
-        const headerImageObject = {
+        /* const headerImageObject = {
             data: req.files['header-image'][0].buffer,
             contentType: req.files['header-image'][0].mimetype
         };
@@ -357,7 +357,7 @@ router.post('/add-gs', authMiddleware, upload.fields([{ name: 'header-image', ma
         const imageObject = {
             data: req.files['image'][0].buffer,
             contentType: req.files['image'][0].mimetype
-        };
+        }; */
 
         const newGorillaSafari = new GorillaSafari({
             country: req.body.country,
@@ -371,8 +371,8 @@ router.post('/add-gs', authMiddleware, upload.fields([{ name: 'header-image', ma
             accommodation: req.body.accommodation,
             preview: req.body.preview,
             itinerary: req.body.itinerary,
-            headerImage: headerImageObject,
-            image: imageObject
+            headerImage: req.body.headerImage,
+            image: req.body.image
         });
 
         await GorillaSafari.create(newGorillaSafari);
@@ -385,20 +385,19 @@ router.post('/add-gs', authMiddleware, upload.fields([{ name: 'header-image', ma
 
 //Post
 //Admin edit gs
-router.post('/edit-gs/:id', authMiddleware, upload.fields([{ name: 'header-image', maxCount: 1 }, { name: 'image', maxCount: 1 }]), async (req, res) => {
+router.post('/edit-gs/:id', authMiddleware, /* upload.fields([{ name: 'header-image', maxCount: 1 }, { name: 'image', maxCount: 1 }]), */ async (req, res) => {
   try {
     const gorillaSafariId = req.params.id;
     const gorillaSafari = await GorillaSafari.findById(gorillaSafariId); // Fetch the gorillaSafari from the database
 
-    const headerImageObject = {
+    /* const headerImageObject = {
       data: req.files['header-image'][0].buffer,
       contentType: req.files['header-image'][0].mimetype
   };
 
   const imageObject = {
       data: req.files['image'][0].buffer,
-      contentType: req.files['image'][0].mimetype
-  };
+      contentType: req.files['image'][0].mimetype */
     // Update the gorillaSafari properties
     gorillaSafari.country= req.body.country,
     gorillaSafari.title= req.body.title,
@@ -411,8 +410,8 @@ router.post('/edit-gs/:id', authMiddleware, upload.fields([{ name: 'header-image
     gorillaSafari.accommodation= req.body.accommodation,
     gorillaSafari.preview= req.body.preview,
     gorillaSafari.itinerary= req.body.itinerary,
-    gorillaSafari.headerImage= headerImageObject,
-    gorillaSafari.image= imageObject
+    gorillaSafari.headerImage= req.body.headerImage,
+    gorillaSafari.image= req.body.image
 
     await gorillaSafari.save(); // Save the updated gorillaSafari
 
@@ -452,9 +451,9 @@ router.get('/add-tours', authMiddleware, (req, res) => {
 });
 
 // Post Admin add tour
-router.post('/add-tour', authMiddleware, upload.fields([{ name: 'header-image', maxCount: 1 }, { name: 'image', maxCount: 1 }]), async (req, res) => {
+router.post('/add-tour', authMiddleware,/*  upload.fields([{ name: 'header-image', maxCount: 1 }, { name: 'image', maxCount: 1 }]), */ async (req, res) => {
     try {
-        const headerImageObject = {
+        /* const headerImageObject = {
             data: req.files['header-image'][0].buffer,
             contentType: req.files['header-image'][0].mimetype
         };
@@ -462,7 +461,7 @@ router.post('/add-tour', authMiddleware, upload.fields([{ name: 'header-image', 
         const imageObject = {
             data: req.files['image'][0].buffer,
             contentType: req.files['image'][0].mimetype
-        };
+        }; */
 
         const newTour = new Tour({
             country: req.body.country,
@@ -476,8 +475,8 @@ router.post('/add-tour', authMiddleware, upload.fields([{ name: 'header-image', 
             accommodation: req.body.accommodation,
             preview: req.body.preview,
             itinerary: req.body.itinerary,
-            headerImage: headerImageObject,
-            image: imageObject
+            headerImage: req.body.headerImage,
+            image: req.body.image
         });
 
         await Tour.create(newTour);
@@ -576,9 +575,9 @@ router.get('/add-destinations', authMiddleware, (req, res) => {
 });
 
 // Post Admin add destination
-router.post('/add-destination', authMiddleware, upload.fields([{ name: 'header-image', maxCount: 1 }, { name: 'image', maxCount: 1 }]), async (req, res) => {
+router.post('/add-destination', authMiddleware, /* upload.fields([{ name: 'header-image', maxCount: 1 }, { name: 'image', maxCount: 1 }]), */ async (req, res) => {
     try {
-        const headerImageObject = {
+        /* const headerImageObject = {
             data: req.files['header-image'][0].buffer,
             contentType: req.files['header-image'][0].mimetype
         };
@@ -586,7 +585,7 @@ router.post('/add-destination', authMiddleware, upload.fields([{ name: 'header-i
         const imageObject = {
             data: req.files['image'][0].buffer,
             contentType: req.files['image'][0].mimetype
-        };
+        }; */
 
         const newdestination = new Destination({
             country: req.body.country,
@@ -600,8 +599,8 @@ router.post('/add-destination', authMiddleware, upload.fields([{ name: 'header-i
             accommodation: req.body.accommodation,
             preview: req.body.preview,
             itinerary: req.body.itinerary,
-            headerImage: headerImageObject,
-            image: imageObject
+            headerImage: req.body.headerImage,
+            image: req.body.image
         });
 
         await Destination.create(newdestination);
@@ -702,10 +701,10 @@ router.get('/add-ws', authMiddleware, (req, res) => {
 });
 
 // Post Admin add wildlife safari
-router.post('/add-ws', authMiddleware, upload.fields([{ name: 'header-image', maxCount: 1 }, { name: 'image', maxCount: 1 }]), async (req, res) => {
+router.post('/add-ws', authMiddleware, /* upload.fields([{ name: 'header-image', maxCount: 1 }, { name: 'image', maxCount: 1 }]), */ async (req, res) => {
     try {
         
-        const headerImageObject = {
+        /* const headerImageObject = {
             data: req.files['header-image'][0].buffer,
             contentType: req.files['header-image'][0].mimetype
         };
@@ -713,7 +712,7 @@ router.post('/add-ws', authMiddleware, upload.fields([{ name: 'header-image', ma
         const imageObject = {
             data: req.files['image'][0].buffer,
             contentType: req.files['image'][0].mimetype
-        };
+        }; */
 
         const newWildlifeSafari = new WildlifeSafari({
             country: req.body.country,
@@ -727,8 +726,8 @@ router.post('/add-ws', authMiddleware, upload.fields([{ name: 'header-image', ma
             accommodation: req.body.accommodation,
             preview: req.body.preview,
             itinerary: req.body.itinerary,
-            headerImage: headerImageObject,
-            image: imageObject
+            headerImage: req.body.headerImage,
+            image: req.body.image
         });
 
         await WildlifeSafari.create(newWildlifeSafari);
@@ -828,10 +827,10 @@ router.get('/add-activity', authMiddleware, (req, res) => {
 });
 
 // Post Admin add activity
-router.post('/add-activity', authMiddleware, upload.fields([{ name: 'header-image', maxCount: 1 }, { name: 'image', maxCount: 1 }]), async (req, res) => {
+router.post('/add-activity', authMiddleware, /* upload.fields([{ name: 'header-image', maxCount: 1 }, { name: 'image', maxCount: 1 }]), */ async (req, res) => {
     try {
         
-        const headerImageObject = {
+        /* const headerImageObject = {
             data: req.files['header-image'][0].buffer,
             contentType: req.files['header-image'][0].mimetype
         };
@@ -839,7 +838,7 @@ router.post('/add-activity', authMiddleware, upload.fields([{ name: 'header-imag
         const imageObject = {
             data: req.files['image'][0].buffer,
             contentType: req.files['image'][0].mimetype
-        };
+        }; */
 
         const newActivity = new Activity({
             country: req.body.country,
@@ -853,8 +852,8 @@ router.post('/add-activity', authMiddleware, upload.fields([{ name: 'header-imag
             accommodation: req.body.accommodation,
             preview: req.body.preview,
             itinerary: req.body.itinerary,
-            headerImage: headerImageObject,
-            image: imageObject
+            headerImage: req.body.headerImage,
+            image: req.body.image
         });
 
         await Activity.create(newActivity);

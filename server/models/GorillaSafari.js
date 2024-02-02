@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const gorillaSafariSchema = new mongoose.Schema({
-    
     country: {
         type: String,
         required: Boolean
@@ -47,14 +46,20 @@ const gorillaSafariSchema = new mongoose.Schema({
         required: Boolean
     },
     headerImage: {
-        data: Buffer, 
-        contentType: String, 
+        type: String, 
         required: Boolean,
     },
-    image: {
-        data: Buffer, 
-        contentType: String, 
-        required: Boolean,
+    image: { 
+        type: String, 
+        required: Boolean, 
+      },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    },
+    updatedAt: {
+        type: Date,
+        default: Date.now
     }
 });
 

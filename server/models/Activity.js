@@ -18,19 +18,19 @@ const activitySchema = new mongoose.Schema({
         type: String,
         required: Boolean
     },
-    details: {
-        type: String,
-        required: Boolean
-    },
-    when: {
-        type: String,
-        required: Boolean
-    },
     price: {
         type: String,
         required: Boolean
     },
     disclaimer: {
+        type: String,
+        required: Boolean
+    },
+    details: {
+        type: String,
+        required: Boolean
+    },
+    when: {
         type: String,
         required: Boolean
     },
@@ -47,14 +47,20 @@ const activitySchema = new mongoose.Schema({
         required: Boolean
     },
     headerImage: {
-        data: Buffer, 
-        contentType: String, 
+        type: String, 
         required: Boolean,
     },
-    image: {
-        data: Buffer, 
-        contentType: String, 
-        required: Boolean,
+    image: { 
+        type: String, 
+        required: Boolean, 
+      },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    },
+    updatedAt: {
+        type: Date,
+        default: Date.now
     }
 });
 
